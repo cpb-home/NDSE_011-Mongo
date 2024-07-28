@@ -4,6 +4,8 @@ const bookMulter = require('../middleware/book');
 const database = require('../db/index');
 const mainUrl = process.env.MAIN_URL || '/api/books';
 const Book = require('../classes/Book');
+const axios = require('axios');
+const COUNTER_URL = process.env.COUNTER_URL;
 
 router.get('/book', (req, res) => {
   const { books } = database;
@@ -21,10 +23,22 @@ router.get('/book/view/:id', (req, res) => {
   if (idx === -1) {
     res.redirect('/404');
   } else {
-    res.render('book/view', {
+    /*res.render('book/view', {
       title: `Библиотека.`,
       book: books[idx]
-    })
+    })*/
+      
+      axios.post(COUNTER_URL + `counter/${id}/incr`)
+      .then(response => {
+        res.render('book/view', {
+          title: `Библиотека.`,
+          book: books[idx],
+          cnt: response.data.cnt
+        })
+      })
+      .catch(error => {
+          console.error('Ошибка запроса:', error);
+      });
   }
 });
 

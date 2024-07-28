@@ -1,4 +1,4 @@
-<%- include('../page/layout-start.ejs', {title: title, book: book}) %>
+<%- include('../page/layout-start.ejs', {title: title, book: book, cnt: cnt}) %>
 
 <main class="main">
   <div class="container">
@@ -23,6 +23,9 @@
           </div>
           <div class="card__row">
             <span class="bold">Ссылка для загрузки: </span><a href="/download/<%= book.id %>" title="">Скачать</a>
+          </div>
+          <div class="card__row">
+            <span class="bold">Кликнуто раз: </span><%= cnt %>
           </div>
         </div>
       <% } %>

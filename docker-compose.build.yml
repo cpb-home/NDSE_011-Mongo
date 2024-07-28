@@ -1,0 +1,23 @@
+services:
+  storage:
+    image: redis
+    volumes:
+      - ./data:/data
+  counter:
+    image: cpbist/counter:1.0.0
+    environment:
+      - PORT=3001
+      - REDIS_URL=redis://storage
+    ports:
+      - 81:3001
+    depends_on:
+      - storage
+  liba:
+    build: .
+    environment:
+      - PORT=3002
+      - REDIS_URL=redis://storage
+    ports:
+      - 80:3002
+    depends_on:
+      - counter
