@@ -94,7 +94,7 @@ router.post('/book/update/:id', async (req, res) => {
   try {
     await Books.findByIdAndUpdate(id, {title, description, authors, favorite, fileCover, fileName, fileBook});
 
-    res.redirect('/api/books/book/view/' + id);
+    res.redirect('/api/books/book/');
   } catch (e) {
     console.log(`Ошибюка роута /: ${e}`);
     res.redirect('/404');

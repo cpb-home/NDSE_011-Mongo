@@ -10,8 +10,6 @@ COPY ./views views/
 COPY ./models models/
 COPY ./public public/
 COPY ./middleware middleware/
-COPY ./db db/
-COPY ./classes classes/
-COPY ./server.js ./
+COPY ./index.js ./
 
 CMD [ "npm", "run", "server" ]

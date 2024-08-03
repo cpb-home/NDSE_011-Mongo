@@ -13,5 +13,5 @@
   <input class="form__input" id="fileBook" name="fileBook" type="file" value="<%= book.fileBook %>" placeholder="Название">
   <label for="favorite">Добавить в избранное</label>
   <input class="form__input" id="favorite" name="favorite" type="checkbox" value="<%= book.favorite %>" placeholder="Название">
-  <button class="addFormSubmitBtn" type="submit">Добавить</button>
+  <button class="addFormSubmitBtn" type="submit"><% if (type === 'update') { %>Изменить<% } else { %>Добавить<% } %></button>
 </form>
